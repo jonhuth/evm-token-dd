@@ -1,0 +1,62 @@
+{
+  "$comment": "Broad / formal report. Must bind identity to the target-integrity manifest.",
+  "skill": "evm-token-due-diligence",
+  "schema_version": "1.0.0",
+  "required": [
+    "skill",
+    "identity",
+    "requested",
+    "reported",
+    "verdict",
+    "ratings",
+    "checks",
+    "findings",
+    "safety"
+  ],
+  "identity": {
+    "investigation_id": "must equal manifest.identity.investigation_id",
+    "target_key": "must equal manifest.identity.target_key"
+  },
+  "verdict": {
+    "answer": "direct conditional answer to the user question",
+    "conditional": true,
+    "go_nogo": "GO | NO-GO | CONDITIONAL | INSUFFICIENT-COVERAGE",
+    "unconditional_safe": false
+  },
+  "ratings": {
+    "token_controls": {"status": "pass|fail|unknown|not-applicable", "check_ids": []},
+    "canonical_lp_principal_custody": {},
+    "side_pool_removal_risk": {},
+    "sellability_and_exit_depth": {},
+    "current_concentration": {},
+    "historical_launch_integrity": {},
+    "admin_treasury_and_reward_custody": {},
+    "reward_accounting_and_liveness": {},
+    "utility_and_redemption_rights": {},
+    "external_dependencies": {},
+    "development_and_disclosure": {}
+  },
+  "checks": [
+    {
+      "id": "C-mint",
+      "status": "pass | fail | unknown | skipped | not-applicable",
+      "as_pass": "must not be true when status is unknown or skipped"
+    }
+  ],
+  "findings": [
+    {
+      "id": "F-A-001",
+      "proposition": "exact claim",
+      "chain_id": 1,
+      "address": "0x...",
+      "pin_or_tx": "block n / 0x tx",
+      "artifact_or_query": "eth_getCode / storage slot / log topic",
+      "decoding_basis": "selector / ABI / raw",
+      "evidence_type": "runtime|storage|rpc|receipt|log|simulation|explorer|website|x-post|inference",
+      "confidence": "proven|strongly-supported|inferred|unknown",
+      "alternatives": [],
+      "coverage": "what was searched",
+      "stale_if": "new implementation, new pool, role change"
+    }
+  ]
+}

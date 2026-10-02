@@ -1,0 +1,95 @@
+{
+  "manifest": {
+    "skill": "evm-token-due-diligence",
+    "identity": {
+      "investigation_id": "synthetic-unknown-pass-001",
+      "target_key": "1:0x1111111111111111111111111111111111111111"
+    },
+    "requested": {
+      "chain_id": 1,
+      "address": "0x1111111111111111111111111111111111111111",
+      "mode": "broad"
+    },
+    "observed": {
+      "chain_id": 1,
+      "address": "0x1111111111111111111111111111111111111111",
+      "name": "Synthetic",
+      "symbol": "SYNTH",
+      "decimals": 18,
+      "metadata_status": "resolved",
+      "unresolved_metadata_fields": []
+    },
+    "pin": {
+      "chain_id": 1,
+      "block_number": 18000000,
+      "block_hash": "0xaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+      "timestamp_utc": "2024-03-09T16:00:00Z",
+      "header": {
+        "number": 18000000,
+        "hash": "0xaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "parentHash": "0xbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+        "timestamp": 1710000000
+      }
+    },
+    "scope_addresses": [
+      {
+        "address": "0x1111111111111111111111111111111111111111",
+        "chain_id": 1,
+        "role": "token",
+        "provenance": "requested",
+        "runtime_status": "contract"
+      }
+    ],
+    "safety": {"no_real_signing": true, "no_broadcast": true, "fork_used": false}
+  },
+  "report": {
+    "skill": "evm-token-due-diligence",
+    "identity": {
+      "investigation_id": "synthetic-unknown-pass-001",
+      "target_key": "1:0x1111111111111111111111111111111111111111"
+    },
+    "requested": {
+      "chain_id": 1,
+      "address": "0x1111111111111111111111111111111111111111"
+    },
+    "reported": {
+      "chain_id": 1,
+      "address": "0x1111111111111111111111111111111111111111",
+      "name": "Synthetic",
+      "symbol": "SYNTH",
+      "decimals": 18
+    },
+    "verdict": {
+      "answer": "Mint authority unknown, but rated as a pass.",
+      "conditional": true,
+      "go_nogo": "GO"
+    },
+    "ratings": {
+      "token_controls": {
+        "status": "pass",
+        "coverage": "unknown",
+        "check_ids": ["C-mint"]
+      }
+    },
+    "checks": [
+      {"id": "C-mint", "status": "unknown", "as_pass": true}
+    ],
+    "findings": [
+      {
+        "id": "F-A-001",
+        "proposition": "Mint check was skipped",
+        "chain_id": 1,
+        "address": "0x1111111111111111111111111111111111111111",
+        "pin_or_tx": "block 18000000",
+        "artifact_or_query": "not run",
+        "decoding_basis": "none",
+        "evidence_type": "inference",
+        "confidence": "unknown",
+        "alternatives": [],
+        "coverage": "none",
+        "stale_if": "n/a"
+      }
+    ],
+    "safety": {"no_real_signing": true, "no_broadcast": true, "fork_used": false}
+  }
+}

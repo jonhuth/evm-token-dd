@@ -1,0 +1,71 @@
+{
+  "$comment": "Target-integrity manifest. Passing validation checks consistency, not chain honesty.",
+  "skill": "evm-token-due-diligence",
+  "schema_version": "1.0.0",
+  "required": [
+    "skill",
+    "identity",
+    "requested",
+    "observed",
+    "pin",
+    "scope_addresses",
+    "safety"
+  ],
+  "identity": {
+    "investigation_id": "string, stable for this investigation",
+    "target_key": "{chain_id}:{checksum_address}"
+  },
+  "requested": {
+    "chain_id": "integer from user request",
+    "address": "0x-prefixed 20-byte hex",
+    "question": "user decision question",
+    "mode": "focused | broad | formal-report"
+  },
+  "observed": {
+    "chain_id": "from eth_chainId on the RPC used",
+    "address": "queried address",
+    "name": "string or null",
+    "symbol": "string or null",
+    "decimals": "integer or null",
+    "total_supply": "string integer or null",
+    "metadata_status": "resolved | unresolved | nonstandard",
+    "unresolved_metadata_fields": ["name", "symbol", "decimals"]
+  },
+  "pin": {
+    "chain_id": "integer",
+    "block_number": "integer >= 1 for current-state pins",
+    "block_hash": "0x 32-byte hex, not zero",
+    "timestamp_utc": "ISO-8601 UTC",
+    "header": {
+      "number": "must equal block_number",
+      "hash": "must equal block_hash",
+      "parentHash": "0x 32-byte hex",
+      "timestamp": "unix seconds matching timestamp_utc"
+    }
+  },
+  "additional_pins": "array of pin objects, one per extra chain",
+  "runtime": {
+    "code_hash": "keccak256 of eth_getCode at pin",
+    "proxy": {
+      "kind": "none | eip1967 | beacon | custom | unresolved",
+      "implementation": "address or null",
+      "admin": "address or null"
+    }
+  },
+  "scope_addresses": [
+    {
+      "address": "0x...",
+      "chain_id": "integer",
+      "role": "token | pool | position-manager | locker | hook | fee-recipient | owner | reward-vault | bridge | oracle | other",
+      "provenance": "requested | derived-from-runtime | log-decoded | factory-computed | explorer-candidate | user-supplied",
+      "runtime_status": "eoa | contract | empty | unresolved",
+      "code_hash": "optional"
+    }
+  ],
+  "safety": {
+    "no_real_signing": true,
+    "no_broadcast": true,
+    "fork_used": false,
+    "fork_restrictions": "required if fork_used"
+  }
+}

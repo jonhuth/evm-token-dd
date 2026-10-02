@@ -1,0 +1,88 @@
+{
+  "manifest": {
+    "skill": "evm-token-due-diligence",
+    "identity": {
+      "investigation_id": "synthetic-same-symbol-001",
+      "target_key": "1:0x1111111111111111111111111111111111111111"
+    },
+    "requested": {
+      "chain_id": 1,
+      "address": "0x1111111111111111111111111111111111111111",
+      "symbol": "FAKE",
+      "mode": "broad"
+    },
+    "observed": {
+      "chain_id": 1,
+      "address": "0x1111111111111111111111111111111111111111",
+      "name": "Fake Token",
+      "symbol": "FAKE",
+      "decimals": 18,
+      "metadata_status": "resolved",
+      "unresolved_metadata_fields": []
+    },
+    "pin": {
+      "chain_id": 1,
+      "block_number": 18000000,
+      "block_hash": "0xaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+      "timestamp_utc": "2024-03-09T16:00:00Z",
+      "header": {
+        "number": 18000000,
+        "hash": "0xaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "parentHash": "0xbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+        "timestamp": 1710000000
+      }
+    },
+    "scope_addresses": [
+      {
+        "address": "0x1111111111111111111111111111111111111111",
+        "chain_id": 1,
+        "role": "token",
+        "provenance": "requested",
+        "runtime_status": "contract"
+      }
+    ],
+    "safety": {"no_real_signing": true, "no_broadcast": true, "fork_used": false}
+  },
+  "report": {
+    "skill": "evm-token-due-diligence",
+    "identity": {
+      "investigation_id": "synthetic-same-symbol-001",
+      "target_key": "1:0x1111111111111111111111111111111111111111"
+    },
+    "requested": {
+      "chain_id": 8453,
+      "address": "0x2222222222222222222222222222222222222222"
+    },
+    "reported": {
+      "chain_id": 8453,
+      "address": "0x2222222222222222222222222222222222222222",
+      "name": "Fake Token",
+      "symbol": "FAKE",
+      "decimals": 18
+    },
+    "verdict": {
+      "answer": "Substituted Base token with the same ticker.",
+      "conditional": true,
+      "go_nogo": "CONDITIONAL"
+    },
+    "ratings": {},
+    "checks": [{"id": "C-mint", "status": "pass"}],
+    "findings": [
+      {
+        "id": "F-A-001",
+        "proposition": "Wrong-chain token treated as the target",
+        "chain_id": 8453,
+        "address": "0x2222222222222222222222222222222222222222",
+        "pin_or_tx": "block 18000000",
+        "artifact_or_query": "explorer ticker search",
+        "decoding_basis": "none",
+        "evidence_type": "explorer",
+        "confidence": "inferred",
+        "alternatives": [],
+        "coverage": "ticker search",
+        "stale_if": "n/a"
+      }
+    ],
+    "safety": {"no_real_signing": true, "no_broadcast": true, "fork_used": false}
+  }
+}

@@ -1,0 +1,87 @@
+{
+  "manifest": {
+    "skill": "evm-token-due-diligence",
+    "identity": {
+      "investigation_id": "synthetic-wrong-target-001",
+      "target_key": "1:0x1111111111111111111111111111111111111111"
+    },
+    "requested": {
+      "chain_id": 1,
+      "address": "0x1111111111111111111111111111111111111111",
+      "mode": "broad"
+    },
+    "observed": {
+      "chain_id": 1,
+      "address": "0x1111111111111111111111111111111111111111",
+      "name": "Synthetic",
+      "symbol": "SYNTH",
+      "decimals": 18,
+      "metadata_status": "resolved",
+      "unresolved_metadata_fields": []
+    },
+    "pin": {
+      "chain_id": 1,
+      "block_number": 18000000,
+      "block_hash": "0xaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+      "timestamp_utc": "2024-03-09T16:00:00Z",
+      "header": {
+        "number": 18000000,
+        "hash": "0xaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "parentHash": "0xbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+        "timestamp": 1710000000
+      }
+    },
+    "scope_addresses": [
+      {
+        "address": "0x1111111111111111111111111111111111111111",
+        "chain_id": 1,
+        "role": "token",
+        "provenance": "requested",
+        "runtime_status": "contract"
+      }
+    ],
+    "safety": {"no_real_signing": true, "no_broadcast": true, "fork_used": false}
+  },
+  "report": {
+    "skill": "evm-token-due-diligence",
+    "identity": {
+      "investigation_id": "synthetic-wrong-target-001",
+      "target_key": "1:0x1111111111111111111111111111111111111111"
+    },
+    "requested": {
+      "chain_id": 1,
+      "address": "0x3333333333333333333333333333333333333333"
+    },
+    "reported": {
+      "chain_id": 1,
+      "address": "0x3333333333333333333333333333333333333333",
+      "name": "Other",
+      "symbol": "OTHR",
+      "decimals": 18
+    },
+    "verdict": {
+      "answer": "Report describes a different contract on the same chain.",
+      "conditional": true,
+      "go_nogo": "CONDITIONAL"
+    },
+    "ratings": {},
+    "checks": [{"id": "C-mint", "status": "pass"}],
+    "findings": [
+      {
+        "id": "F-A-001",
+        "proposition": "Wrong address reported",
+        "chain_id": 1,
+        "address": "0x3333333333333333333333333333333333333333",
+        "pin_or_tx": "block 18000000",
+        "artifact_or_query": "eth_getCode",
+        "decoding_basis": "runtime",
+        "evidence_type": "runtime",
+        "confidence": "proven",
+        "alternatives": [],
+        "coverage": "runtime",
+        "stale_if": "n/a"
+      }
+    ],
+    "safety": {"no_real_signing": true, "no_broadcast": true, "fork_used": false}
+  }
+}
