@@ -10,6 +10,8 @@ permissions:
 
 jobs:
   test:
+    # hosted-runner-reason: public repo; fork PRs must never execute on homebox, and
+    # public repositories bill no Actions minutes.
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
